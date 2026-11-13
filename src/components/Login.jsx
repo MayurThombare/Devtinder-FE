@@ -10,8 +10,10 @@ const Login = () => {
   const [password, setPassword] = useState("Virat@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const handleLogin = async () => {
-    const res = await axios.post(
+    try {
+          const res = await axios.post(
       `${BASE_URL}/login`,
       {
         email,
@@ -25,6 +27,10 @@ const Login = () => {
     dispatch(addUser(res.data.data));
 
     navigate("/feed"); //
+    } catch (error) {
+      setError(error.response.data.message || 'something went wrong')
+    }
+
   };
 
   return (
@@ -61,6 +67,7 @@ const Login = () => {
             </fieldset>
           </div>
           <div className="card-actions justify-center my-2">
+            <p className="text-error">{error}</p>
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
             </button>
