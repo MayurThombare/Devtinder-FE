@@ -6,6 +6,8 @@ const Profile = () => {
 
   const user = useSelector((store)=>store.user);
 
+  if(!user) return <h1> Loading</h1>
+
   return (
     <div>
       <EditProfile user = {user} />
