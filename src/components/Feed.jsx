@@ -7,7 +7,7 @@ import { addFeed } from "../utils/feedSlice";
 import UserCard from "./UserCard";
 const Feed = () => {
   const dispatch = useDispatch();
-  const feedData = useSelector((store)=> store.feed)
+  const feedData = useSelector((store) => store.feed);
   const getFeed = async () => {
     if (!feedData) return;
     try {
@@ -24,9 +24,12 @@ const Feed = () => {
   useEffect(() => {
     getFeed();
   }, []);
-  return <div className="flex justify-center my-4 align-middle">
-   {feedData.length > 0 && <UserCard  user = {feedData[0]}/>}
-  </div>;
+  return (
+    <div className="flex justify-start mx-4  my-4 align-middle gap-3">
+      {feedData.length > 0 &&
+        feedData.map((user) => <UserCard key={user._id} user={user} />)}
+    </div>
+  );
 };
 
 export default Feed;
