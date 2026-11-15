@@ -21,9 +21,14 @@ const Feed = () => {
     }
   };
 
+
   useEffect(() => {
     getFeed();
   }, []);
+
+  if(!feedData) return;
+  if(feedData.length===0) return <h1 className="text-center text-2xl">NO More Users</h1>
+  
   return (
     <div className="flex justify-start mx-4  my-4 align-middle gap-3">
       {feedData.length > 0 &&
