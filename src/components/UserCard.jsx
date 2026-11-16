@@ -20,7 +20,7 @@ const UserCard = ({ user }) => {
     <>
       <div className="card bg-base-300 w-96 shadow-sm">
         <figure>
-          <img src={photoUrl} alt={`${firstName} ${lastName}`} />
+          <img className="w-80 h-50" src={photoUrl} alt={`${firstName} ${lastName}`} />
         </figure>
         <div className="card-body">
           <h2 className=" text-2xl card-title">
